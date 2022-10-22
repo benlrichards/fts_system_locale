@@ -5,7 +5,9 @@ class $Home1 {
   String toString() => "home.";
 
   $Home1._();
-  final String changeLocale = 'home.changeLocale';
+  final String changeLocale = 'home.change_locale';
+  final String title = 'home.title';
+  final String navigateTo = 'home.navigate_to';
 }
 
 class Strings {
