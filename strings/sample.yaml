@@ -1,0 +1,2 @@
+home:
+  $ref: home.yaml
