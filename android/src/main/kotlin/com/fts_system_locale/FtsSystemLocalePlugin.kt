@@ -19,6 +19,8 @@ import io.flutter.plugin.common.MethodChannel.Result
 import java.util.*
 import javax.xml.transform.OutputKeys.VERSION
 
+const val channelName = "fts_system_locale"
+
 /** FtsSystemLocalePlugin */
 class FtsSystemLocalePlugin : FlutterPlugin, MethodCallHandler {
     /// The MethodChannel that will the communication between Flutter and native Android
@@ -30,30 +32,32 @@ class FtsSystemLocalePlugin : FlutterPlugin, MethodCallHandler {
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         application = flutterPluginBinding.applicationContext as Application
-        Locale.setDefault(Locale("en"))
-        Lingver.init(application, Locale.getDefault())
-        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "fts_system_locale")
+        if (Build.VERSION.SDK_INT < 33) {
+            Lingver.init(application, Locale.getDefault())
+        }
+        channel = MethodChannel(flutterPluginBinding.binaryMessenger, channelName)
         channel.setMethodCallHandler(this)
     }
 
     private fun setAppLocale(locale: String?) {
         if (locale == null) {
-            Lingver.getInstance().setFollowSystemLocale(application)
             if (Build.VERSION.SDK_INT >= 33) {
-                val localeList = LocaleList(Locale.getDefault())
                 val localeManager = getSystemService(application, LocaleManager::class.java)
-                localeManager?.applicationLocales = localeList
-                Log.d("Locale", "Locale set to ${Locale.getDefault()} for Android 13+")
+                localeManager?.applicationLocales = localeManager!!.systemLocales
+
+            }else {
+                Lingver.getInstance().setFollowSystemLocale(application)
             }
+            Log.d(channelName, "Locale set to system default")
         } else {
-            Lingver.getInstance().setLocale(application, locale)
             if (Build.VERSION.SDK_INT >= 33) {
                 val localeList = LocaleList(Locale(locale))
                 val localeManager = getSystemService(application, LocaleManager::class.java)
                 localeManager?.applicationLocales = localeList
-                Log.d("Locale", "Locale set to $locale for Android 13+")
-
+            }else{
+                Lingver.getInstance().setLocale(application, locale)
             }
+            Log.d(channelName, "Locale set to $locale")
         }
     }
 
@@ -63,7 +67,7 @@ class FtsSystemLocalePlugin : FlutterPlugin, MethodCallHandler {
             "setLocale" -> {
                 val locale = call.argument<String>("locale")
                 setAppLocale(locale)
-                result.success("Locale set to $locale")
+                result.success(true)
             }
             else -> result.notImplemented()
         }

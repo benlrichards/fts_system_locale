@@ -9,15 +9,10 @@ class MethodChannelFtsSystemLocale extends FtsSystemLocalePlatform {
   @visibleForTesting
   final methodChannel = const MethodChannel('fts_system_locale');
 
+  /// {@macro setLocale}
   @override
-  Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
-    return version;
-  }
-
-  @override
-  Future<String?> setLocale(String? locale) async {
-    final version = await methodChannel.invokeMethod<String>('setLocale', {'locale': locale});
+  Future<bool?> setLocale(String? locale) async {
+    final version = await methodChannel.invokeMethod<bool>('setLocale', {'locale': locale});
     return version;
   }
 }

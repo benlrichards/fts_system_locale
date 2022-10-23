@@ -1,5 +1,5 @@
 name: fts_system_locale
-description: A new Flutter plugin project.
+description: Change the system locale for your app.
 version: 0.0.1
 
 environment:
@@ -39,12 +39,8 @@ flutter:
         pluginClass: FtsSystemLocalePlugin
       ios:
         pluginClass: FtsSystemLocalePlugin
-      linux:
-        pluginClass: FtsSystemLocalePlugin
       macos:
         pluginClass: FtsSystemLocalePlugin
-      windows:
-        pluginClass: FtsSystemLocalePluginCApi
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

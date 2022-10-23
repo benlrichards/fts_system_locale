@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:fts_system_locale/fts_system_locale_method_channel.dart';
+import 'package:fts_system_locale/src/fts_system_locale_method_channel.dart';
 
 void main() {
   MethodChannelFtsSystemLocale platform = MethodChannelFtsSystemLocale();
@@ -10,7 +10,14 @@ void main() {
 
   setUp(() {
     channel.setMockMethodCallHandler((MethodCall methodCall) async {
-      return '42';
+      final method = methodCall.method;
+      if (method == 'setLocale') {
+        final locale = methodCall.arguments['locale'];
+        return 'locale set to $locale';
+      }
+      throw MissingPluginException(
+        'No implementation found for method $method on channel fts_system_locale',
+      );
     });
   });
 
@@ -18,7 +25,7 @@ void main() {
     channel.setMockMethodCallHandler(null);
   });
 
-  test('getPlatformVersion', () async {
-    expect(await platform.getPlatformVersion(), '42');
+  test('setLocale', () async {
+    expect(await platform.setLocale('en'), 'locale set to en');
   });
 }

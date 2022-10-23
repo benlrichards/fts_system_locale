@@ -23,11 +23,11 @@ abstract class FtsSystemLocalePlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
-    throw UnimplementedError('platformVersion() has not been implemented.');
-  }
-
-  Future<String?> setLocale(String? locale) {
+  /// {@template setLocale}
+  /// Sets the system locale. if you pass null, it will reset the locale to the
+  /// system default.
+  /// {@endtemplate}
+  Future<bool?> setLocale(String? locale) {
     throw UnimplementedError('setLocale() has not been implemented.');
   }
 }
