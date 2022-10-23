@@ -8,11 +8,12 @@ class MockFtsSystemLocalePlatform
     with MockPlatformInterfaceMixin
     implements FtsSystemLocalePlatform {
   @override
-  Future<String?> setLocale(String? locale) => Future.value('locale set to $locale');
+  Future<bool?> setLocale(String? locale) => Future.value(true);
 }
 
 void main() {
-  final FtsSystemLocalePlatform initialPlatform = FtsSystemLocalePlatform.instance;
+  final FtsSystemLocalePlatform initialPlatform =
+      FtsSystemLocalePlatform.instance;
 
   test('$MethodChannelFtsSystemLocale is the default instance', () {
     expect(initialPlatform, isInstanceOf<MethodChannelFtsSystemLocale>());
@@ -23,6 +24,6 @@ void main() {
     MockFtsSystemLocalePlatform fakePlatform = MockFtsSystemLocalePlatform();
     FtsSystemLocalePlatform.instance = fakePlatform;
 
-    expect(await ftsSystemLocalePlugin.setLocale('en'), 'locale set to en');
+    expect(await ftsSystemLocalePlugin.setLocale('en'), true);
   });
 }

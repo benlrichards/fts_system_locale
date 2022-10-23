@@ -48,7 +48,8 @@ class _MyAppState extends State<MyApp> {
             children: [
               DropdownButton<Locale>(
                 items: AppLocales.supportedLocales
-                    .map((e) => DropdownMenuItem(value: e, child: Text(e.languageCode)))
+                    .map((e) =>
+                        DropdownMenuItem(value: e, child: Text(e.languageCode)))
                     .toList(),
                 onChanged: (value) {
                   setState(() {

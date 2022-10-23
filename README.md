@@ -37,3 +37,23 @@ check the example dir for a complete example.
 For Android 13+ "per-app-language" support. Follow https://developer.android.com/guide/topics/resources/app-languages#app-language-settings
 
 Others need no extra configuration.
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/roipeker/"><img src="https://avatars.githubusercontent.com/u/33768711?v=4" width="100px;" alt=""/><br /><sub><b> Roi Peker </b></sub></a><br /></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

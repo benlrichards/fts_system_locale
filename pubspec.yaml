@@ -1,7 +1,7 @@
 name: fts_system_locale
 description: Change the system locale for your app.
 version: 0.0.1
-
+repository: https://github.com/IsmailAlamKhan/fts_system_locale/
 environment:
   sdk: ">=2.18.2 <3.0.0"
   flutter: ">=2.5.0"

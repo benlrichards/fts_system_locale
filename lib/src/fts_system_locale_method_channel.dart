@@ -12,7 +12,8 @@ class MethodChannelFtsSystemLocale extends FtsSystemLocalePlatform {
   /// {@macro setLocale}
   @override
   Future<bool?> setLocale(String? locale) async {
-    final version = await methodChannel.invokeMethod<bool>('setLocale', {'locale': locale});
+    final version =
+        await methodChannel.invokeMethod<bool>('setLocale', {'locale': locale});
     return version;
   }
 }
