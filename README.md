@@ -1,9 +1,6 @@
 # fts_system_locale
 
-A flutter plugin to set the system locale. This is companion plugin [flutter_translation_sheet](https://pub.dev/packages/flutter_translation_sheet) package.
-| | Android | iOS | Linux | macOS | Web | Windows |
-| ----------- | ------- | ---- | ------- | ------ | ----------- | ------- |
-| **Support** | SDK 16+ | 9.0+ | Not yet | 10.11+ | Not planned | Not yet |
+A flutter plugin to set the system locale. This is companion plugin for [flutter_translation_sheet](https://pub.dev/packages/flutter_translation_sheet) package.
 
 ## Getting Started
 
